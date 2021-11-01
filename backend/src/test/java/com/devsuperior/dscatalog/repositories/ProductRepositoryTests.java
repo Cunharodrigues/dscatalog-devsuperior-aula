@@ -60,7 +60,7 @@ public class ProductRepositoryTests {
 
 	// Deletar o Obj quando não existe
 	@Test
-	public void deleteShouldThrowEmptyResultDataAccessExceptionWhenIdDoesNotExist() {
+	public void deleteShouldThrowEmptyResultDataAccessExceptionWhenIdDoesNotExists() {
 
 		// Arrange
 		// long nonExistingId = 1000L;
