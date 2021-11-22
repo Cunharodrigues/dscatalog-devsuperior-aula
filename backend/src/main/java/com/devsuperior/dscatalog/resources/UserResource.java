@@ -31,7 +31,6 @@ public class UserResource {
 
 	@GetMapping
 	public ResponseEntity<Page<UserDTO>> findAll(Pageable pageable) {
-		// PARAMETROS: 	page, size, sort 
 		Page<UserDTO> list = service.findAllPaged(pageable);
 		return ResponseEntity.ok().body(list);
 	}
