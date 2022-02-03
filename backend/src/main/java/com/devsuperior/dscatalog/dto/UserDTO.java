@@ -2,7 +2,6 @@ package com.devsuperior.dscatalog.dto;
 
 import java.io.Serializable;
 import java.util.HashSet;
-import java.util.Objects;
 import java.util.Set;
 
 import javax.validation.constraints.Email;
@@ -18,14 +17,13 @@ public class UserDTO implements Serializable {
 	@NotBlank(message = "Campo obrigatório")
 	private String firstName;
 	private String lastName;
-	
-	@Email(message = "Favor digitar um email válido")
+
+	@Email(message = "Favor entrar um email válido")
 	private String email;
 	
 	Set<RoleDTO> roles = new HashSet<>();
 	
 	public UserDTO() {
-		
 	}
 
 	public UserDTO(Long id, String firstName, String lastName, String email) {
@@ -33,18 +31,16 @@ public class UserDTO implements Serializable {
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.email = email;
-		
 	}
-
+	
 	public UserDTO(User entity) {
 		id = entity.getId();
 		firstName = entity.getFirstName();
 		lastName = entity.getLastName();
 		email = entity.getEmail();
 		entity.getRoles().forEach(role -> this.roles.add(new RoleDTO(role)));
-		
 	}
-	
+
 	public Long getId() {
 		return id;
 	}
@@ -77,26 +73,7 @@ public class UserDTO implements Serializable {
 		this.email = email;
 	}
 
-	
 	public Set<RoleDTO> getRoles() {
 		return roles;
 	}
-
-	@Override
-	public int hashCode() {
-		return Objects.hash(id);
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		UserDTO other = (UserDTO) obj;
-		return Objects.equals(id, other.id);
-	}
-
 }
